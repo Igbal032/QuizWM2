@@ -17,14 +17,8 @@
 <head><title>Quiz Page</title></head>
 
 <body>
-  <h1 style="text-align: center;">Good Luck</h1>
-  <table align="center" style="width:40%; text-align: center;">
-  <tr>
-    <th>ID</th>
-    <th>Firstname</th>
-    <th>Lastname</th> 
-    <th>Email</th>
-  </tr>
+  <h1 style="text-align: center;">Next Question</h1>
+  
 <!-- 
  <%
   Student stInfo = (Student)session.getAttribute("studentInfo");
@@ -75,10 +69,10 @@
 
   %>
   <p>Statement</p>
-  <p><input id="first" type="radio" name="variant" value="a"><label for="first">A)  İstehsal günündən 5 il ərzində. </label></input></p>
-  <p><input id="second" type="radio" name="variant" value="b"><label for="second">B)  Əldə olunan gündən 5 il ərzində.</label></input></p>
-  <p><input id="third" type="radio" name="variant" value="c"><label for="third">C)  Əldə olunan gündən 4 il ərzində.</label></input></p>
-  <p><input id="fourth" type="radio" name="variant" value="d"><label for="fourth">D) v İstehsal günündən 4 il ərzində.</label></input></p>
+  <p><input id="first" type="radio" name="variant" value="a"><label for="first">A) 1 </label></input></p>
+  <p><input id="second" type="radio" name="variant" value="b"><label for="second">B)  2.</label></input></p>
+  <p><input id="third" type="radio" name="variant" value="c"><label for="third">C)  3.</label></input></p>
+  <p><input id="fourth" type="radio" name="variant" value="d"><label for="fourth">D) 4</label></input></p>
   <div class="forButtons" style="display: flex;justify-content: space-around; padding: 50px"><button>Geriyə</button> <button>İrəli</button></div>
   <div id="forFinishButton" style="display: flex;justify-content: center;"><button>Bitir</button></div>
   <div class="content" style="display: flex;justify-content: space-between;">

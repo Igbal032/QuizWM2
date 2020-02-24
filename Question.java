@@ -5,9 +5,9 @@ public class Question{
 
 	private Integer qId;
 	private String qStatement;
+	private HashMap<Integer, String> variants;
 	private Integer answerId;
 
-	
 	public Integer getId(){return qId;}
 	public String getQstatement(){return qStatement;}
 	public Integer getAnswerId(){return answerId;}
@@ -21,6 +21,11 @@ public class Question{
 
 	public void setAnswerId(int ansId){
 		this.answerId=ansId;
+	}
+
+	public void setVariants(Integer id, String stat){
+		new HashMap<Integer, String>();
+		this.variants.put(id,stat);
 	}
 
 }

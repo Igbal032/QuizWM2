@@ -7,13 +7,6 @@ import java.util.*;
 
 public class StudentServlet extends HttpServlet{
 	public  void init(){
-	ArrayList<Question> questionList = new ArrayList<Question>();
-	ArrayList<Variants> VariantList = new ArrayList<Variants>();
-	Question newQuestion = new Question();
-	newQuestion.SetId(1);
-	newQuestion.setQstatement("Salam Necesiz?");
-	newQuestion.setAnswerId(2);
-	questionList.add(newQuestion);
 
     // ArrayList<Integer id, String statement> questionList = new ArrayList();
 	}
@@ -28,7 +21,6 @@ public class StudentServlet extends HttpServlet{
 	ArrayList<Student> registeredStudent = new ArrayList<Student>();
 	int size = registeredStudent.size();
 
-	System.out.println("<h1>Salam</h1>");
 	try{
 	    PrintWriter wrt = response.getWriter();
     
@@ -49,7 +41,6 @@ public class StudentServlet extends HttpServlet{
 	            newStudent.setEmail(email);
 	            newStudent.setCurrentQuestionId(1);
 	            registeredStudent.add(newStudent);
-    			wrt.println("<h1>>2!</h1>");
 				Iterator iterator = registeredStudent.iterator();
 				while(iterator.hasNext()) {
 				Student std = (Student)iterator.next();
@@ -57,7 +48,6 @@ public class StudentServlet extends HttpServlet{
     				request.getSession().setAttribute("newStudent",newStudent);
 		            RequestDispatcher view = request.getRequestDispatcher("view.jsp");
 		            view.forward(request,response);
-    				wrt.println(checkStudent+" Check");
     			}
 				}	
 				//not workink after last If candition

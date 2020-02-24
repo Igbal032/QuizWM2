@@ -1,0 +1,34 @@
+	
+				if (checkStudent==false) {
+				   Student newStudent3 = new Student();
+	               newStudent3.setId(++ID);
+	               newStudent3.setName(firstName);
+	               newStudent3.setSurname(lastName);
+	               newStudent3.setPassword(password);
+	               newStudent3.setEmail(email);
+	               registeredStudent.add(newStudent3);
+	               wrt.println(checkStudent+" Check");
+	               wrt.println(newStudent3.getFirstName()+" Check");
+
+	               request.getSession().setAttribute("newStudent",newStudent);
+		           RequestDispatcher view = request.getRequestDispatcher("view.jsp");
+		           view.forward(request,response);
+				}
+
+
+
+    		   if(registeredStudent.size()==2){
+    			wrt.println("<h1>>2!</h1>");
+				Iterator iterator = registeredStudent.iterator();
+				while(iterator.hasNext()) {
+				Student std = (Student)iterator.next();
+    			  if(std.getEmail().equals(email)) {
+    			  	checkStudent=true;
+    			  	wrt.println(checkStudent+" Check");
+    			  }
+				}
+
+				if(!checkStudent){
+					wrt.println(checkStudent+" Check");
+				}
+			  }

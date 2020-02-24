@@ -1,0 +1,12 @@
+<web-app>
+  <servlet>
+    <servlet-name>Student Servlet</servlet-name>
+    <servlet-class>wm2.quiz.StudentServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Student Servlet</servlet-name>
+    <url-pattern>/student-servlet</url-pattern>
+  </servlet-mapping>
+</web-app>
+

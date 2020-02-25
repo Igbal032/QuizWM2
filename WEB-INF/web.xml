@@ -10,7 +10,7 @@
     <url-pattern>/student-servlet</url-pattern>
   </servlet-mapping>
 
-  <servlet>
+   <servlet>
     <servlet-name>Question Servlet</servlet-name>
     <servlet-class>wm2.quiz.QuestionServlet</servlet-class>
   </servlet>
@@ -18,7 +18,7 @@
   <servlet-mapping>
     <servlet-name>Question Servlet</servlet-name>
     <url-pattern>/question-servlet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
 
 </web-app>
 

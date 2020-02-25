@@ -11,17 +11,22 @@ public class QuestionServlet extends HttpServlet{
 
 	}
 
-	public void doGet(HttpServletRequest request,HttpServletResponse response) {
+	public void doPost(HttpServletRequest request,HttpServletResponse response) {
 	
 	try{
 	    PrintWriter wrt = response.getWriter();
-    
+    	
+    	String userId = (String)request.getParameter("hiddenUserId");
+    	String userName = (String)request.getParameter("hiddenUserName");
+    	String currentQuestionId = (String)request.getParameter("getCurrentQuestionId2");
+    	int cQ = Integer.parseInt(currentQuestionId);
+    	cQ++;
+    	wm2.quiz.findQuestion getQues = new findQuestion();
+    	Question findQuestion = getQues.findQuestionWithId(cQ);
     	wrt.println("<html><head></head><body>");
-    	wrt.println("Salam");
-
-  //   	request.getSession().setAttribute("newStudent",newStudent);
-		// RequestDispatcher view = request.getRequestDispatcher("view.jsp");
-		// view.forward(request,response);
+     	request.getSession().setAttribute("currentQuestion",findQuestion);
+        RequestDispatcher view2 = request.getRequestDispatcher("view.jsp");
+		view2.forward(request,response);
 
 		wrt.println("</body></html>");
 

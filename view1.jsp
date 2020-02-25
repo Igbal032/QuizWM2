@@ -1,20 +1,20 @@
 <%@ page import = "java.util.*, wm2.quiz.Student, wm2.quiz.Question, wm2.quiz.findQuestion"%> 
 <%
-Student stData = (Student)session.getAttribute("newStudent");
+// Student stData = (Student)session.getAttribute("newStudent");
 
-Question currentQuestion =(Question)session.getAttribute("currentQuestion");
-// System.out.println(currentQuestion.getId()+" Success-1");
-Question currentQ = new Question();
-wm2.quiz.findQuestion getQues = new findQuestion();
- if(currentQuestion!=null){
-   currentQ = currentQuestion;
-   out.println(currentQ.getId()+"After2");
-  }
-  else{
-  currentQ = getQues.findQuestionWithId(1);
-  currentQuestion = currentQ;
-}
-
+// String qId =(String)session.getAttribute("quId");
+// System.out.println(qId+" Success-1");
+// Question currentQ = new Question();
+// wm2.quiz.findQuestion getQues = new findQuestion();
+// if (!stData.equals(null)){
+//     qId="1";
+//     System.out.println(qId+"Success-2");
+//     currentQ = getQues.findQuestionWithId(qId);
+// }
+// else{
+//   currentQ = getQues.findQuestionWithId(qId);
+//  }
+// out.println(qId);
 %>
 <html>
 <style type="text/css">
@@ -53,9 +53,8 @@ wm2.quiz.findQuestion getQues = new findQuestion();
   <input type="hidden" name="hiddenUserId" value="<%=stData.getId()%>">
   <input type="hidden" name="hiddenUserName" value="<%=stData.getUserName()%>">
   <input type="hidden" name="getCurrentQuestionId" value="<%=stData.getCurrentQuestionId()%>">
-  <input type="hidden" name="getCurrentQuestionId2" value="<%=currentQ.getId()%>">
+  <input type="hidden" name="getCurrentQuestionId2" value="<%=qId%>">
   <h4><%=currentQ.getId()+" "%>Sual.1</h4>
-  <h4><%=currentQuestion.getId()+"salam"%></h4>
   
   <p><%=currentQ.getQstatement()%></p>
   <p><input id="first" type="radio" name="variant" value="<%=currentQ.getVarId1()%>"><label for="first">A) <%=currentQ.getVarStat1()%> </label></input></p>

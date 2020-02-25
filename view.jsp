@@ -53,12 +53,18 @@ wm2.quiz.findQuestion getQues = new findQuestion();
   <input type="hidden" name="hiddenUserName" value="<%=stData.getUserName()%>">
   <input type="hidden" name="getCurrentQuestionId" value="<%=stData.getCurrentQuestionId()%>">
   <input type="hidden" name="getCurrentQuestionId2" value="<%=currentQ.getId()%>">
-  <h4 style="padding:10px"><%=currentQ.getId()%></h4>
   
-  <p><%=currentQ.getQstatement()%></p>
-  <p><input id="first" type="radio" name="variant" value="<%=currentQ.getVarId1()%>"><label for="first">A) <%=currentQ.getVarStat1()%> </label></input></p>
-  <p><input id="second" type="radio" name="variant" value="<%=currentQ.getVarId2()%>"><label for="second">B)  <%=currentQ.getVarStat2()%></label></input></p>
-  <p><input id="third" type="radio" name="variant" value="<%=currentQ.getVarId3()%>"><label for="third">C) <%=currentQ.getVarStat3()%></label></input></p>
+  
+  <p><%=currentQ.getId()+". "%><%=currentQ.getQstatement()%></p>
+  <p>
+    <input id="first" type="radio" name="variant" value="<%=currentQ.getVarId1()%>">
+    <label for="first">A) <%=currentQ.getVarStat1()%> </label></input></p>
+  <p>
+    <input id="second" type="radio" name="variant" value="<%=currentQ.getVarId2()%>">
+    <label for="second">B)  <%=currentQ.getVarStat2()%></label></input></p>
+  <p>
+    <input id="third" type="radio" name="variant" value="<%=currentQ.getVarId3()%>">
+    <label for="third">C) <%=currentQ.getVarStat3()%></label></input></p>
   <div class="forButtons" style="display: flex;justify-content: space-around; padding: 50px"><input type="submit" name="BackButton" value="Back"/> <input type="submit" name="NextButton" value="Next"></div>
   <div id="forFinishButton" style="display: flex;justify-content: center;"><button>Finish</button></div>
   <div class="content" style="display: flex;justify-content: space-between;">

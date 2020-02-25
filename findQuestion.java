@@ -2,6 +2,7 @@ package wm2.quiz;
 
 import java.util.*;
 import wm2.quiz.Question;
+import wm2.quiz.CheckedAnswerss;
 public class findQuestion{
 
 	ArrayList<Question> questionList;
@@ -146,5 +147,30 @@ public class findQuestion{
 		}
 		return returnedQuestion;
 	}
+
+    public CheckedAnswerss checkQuestion(Integer questionId, String userName, String answerId){
+        Iterator iterator = questionList.iterator();
+        Question keepQuestion = new  Question();
+        CheckedAnswerss newAnswer = new CheckedAnswerss();
+        while(iterator.hasNext()) {
+            Question std = (Question)iterator.next();
+            if (std.getId().equals(questionId)) {
+
+                keepQuestion = std;
+            }
+        }
+        newAnswer.setUserName(userName);
+        newAnswer.setQuestionId(questionId);
+        newAnswer.setSelectedAnswer(Integer.parseInt(answerId));
+        newAnswer.setCorrectAnswer(keepQuestion.getAnswerId());
+        if (keepQuestion.getAnswerId()==Integer.parseInt(answerId)) {
+            newAnswer.setTF(1);
+        }
+        else{
+            newAnswer.setTF(0);
+        }
+
+        return newAnswer;
+    }
 
 }

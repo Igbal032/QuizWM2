@@ -12,51 +12,66 @@ public class QuestionServlet extends HttpServlet{
 	}
 
 	public void doPost(HttpServletRequest request,HttpServletResponse response) {
-	
+
+	    ArrayList<CheckedAnswerss> checkedAnswerList = new ArrayList<CheckedAnswerss>();
+        String userId = (String)request.getParameter("hiddenUserId");
+        String userName = (String)request.getParameter("hiddenUserName");
+        String currentQuestionId = (String)request.getParameter("getCurrentQuestionId2");
+        String backButton  = (String)request.getParameter("BackButton");
+        String nextButton  = (String)request.getParameter("NextButton");
+        String variant = (String)request.getParameter("variant");
+        int cQ = Integer.parseInt(currentQuestionId);
 	try{
-	    PrintWriter wrt = response.getWriter();
-    	
-    	String userId = (String)request.getParameter("hiddenUserId");
-    	String userName = (String)request.getParameter("hiddenUserName");
-    	String currentQuestionId = (String)request.getParameter("getCurrentQuestionId2");
-    	String backButton  = (String)request.getParameter("BackButton");
-    	String nextButton  = (String)request.getParameter("NextButton");
+        wm2.quiz.findQuestion getQues = new findQuestion();
+               PrintWriter wrt = response.getWriter();
 
-    	// wrt.println(backButton +" Bcliced back Button");
-     // 	wrt.println(nextButton +" Ncliced next Button");
-    	int cQ = Integer.parseInt(currentQuestionId);
-    	 if (backButton==null){
-    	 	cQ++;
-    	 	if (cQ>10) {
-    	 		cQ--;
-    	 	}
-    	 }
-    	 else if(nextButton==null){
-    	 	cQ--;
-    	 	if (cQ==0) {
-    	 		cQ++;
-    	 	}
-    	 }
+        CheckedAnswerss newChecAns = getQues.checkQuestion(cQ, userName, variant);
+        checkedAnswerList.add(newChecAns);
+        wrt.println(checkedAnswerList.size());
+        if ((request.getParameter("variant")!=null)){
+        wrt.println(checkedAnswerList.size()+"s casda" );
+           if (backButton==null){
+           cQ++;
+               if (cQ>10) {
+                   cQ--;
+               }
+           }
+           else if(nextButton==null){
+           cQ--;
+               if (cQ==0) {
+                   cQ++;
+               }
+           }     
+        }
+        else{
+            if (backButton==null){
+           cQ++;
+               if (cQ>10) {
+                   cQ--;
+               }
+           }
+           else if(nextButton==null){
+           cQ--;
+               if (cQ==0) {
+                   cQ++;
+               }
+           }     
+         }  
+          
 
-    	// if(backButton.equals("cliced")){
-    	// cQ--;
-    	// }
-    	// else if(nextButton.equals("cliced")){
-
-    	// }
-    	wm2.quiz.findQuestion getQues = new findQuestion();
     	Question findQuestion = getQues.findQuestionWithId(cQ);
     	wrt.println("<html><head></head><body>");
-         request.getSession().setAttribute("currentQuestion",findQuestion);
-         RequestDispatcher view2 = request.getRequestDispatcher("view.jsp");
-		 view2.forward(request,response);
+        request.getSession().setAttribute("currentQuestion",findQuestion);
+        RequestDispatcher view2 = request.getRequestDispatcher("view.jsp");
+		view2.forward(request,response);
 
 		wrt.println("</body></html>");
 
-       }	
+      
+        }
 
     catch (Exception ex) {
-	      	;
+	      	System.out.println(ex);
 	}
 
 }

@@ -1,21 +1,82 @@
-<%@ page import = "java.util.*, wm2.quiz.Student, wm2.quiz.Question, wm2.quiz.findQuestion"%> 
+<%@ page import = "java.util.*, wm2.quiz.Student, wm2.quiz.Question, wm2.quiz.findQuestion, wm2.quiz.CheckedAnswerss"%> 
 <%
 Student stData = (Student)session.getAttribute("newStudent");
-
+// CheckedAnswerss currentAnswer = (CheckedAnswerss)session.getAttribute("keepAnswer");
 Question currentQuestion =(Question)session.getAttribute("currentQuestion");
-// System.out.println(currentQuestion.getId()+" Success-1");
 Question currentQ = new Question();
+Integer currentVariantVal=0;
+System.out.println(currentVariantVal);
+String selected1="";
+String selected2="";
+String selected3="";
 wm2.quiz.findQuestion getQues = new findQuestion();
  if(currentQuestion!=null){
+   currentVariantVal = findQuestion.getSelectedId(currentQuestion.getId());
+   //System.out.println(currentVariantVal+" not null");
+   //System.out.println(currentQ.getVarId1()+ " cQ Id");
+   //if(currentVariantVal==currentQuestion.getVarId1()){
+   //System.out.println(currentVariantVal+" checked 1");
+   //   selected1="checked";
+   //}
+   //else if(currentVariantVal==currentQuestion.getVarId2()){
+   // System.out.println(currentVariantVal+" checked 2");
+//
+//   //   selected2="checked";
+//   //}
+//   //else if(currentVariantVal==currentQuestion.getVarId3()){
+//   //System.out.println(currentVariantVal+" checked 3");
+//
+//   //   selected3="checked";
+   //}
    currentQ = currentQuestion;
   }
   else{
+  currentVariantVal=0;
   currentQ = getQues.findQuestionWithId(1);
   currentQuestion = currentQ;
-}
-
+  }
 %>
 <html>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+
+  // var first = document.getElementById("first").setAttribute("checked","false");
+  // var second = document.getElementById("second").setAttribute("checked",false);
+  // var third = document.getElementById("third").setAttribute("checked",false);
+  // var first = document.getElementById("first").removeAttribute(checked);
+  // var second = document.getElementById("second").removeAttribute(checked);
+  // var third = document.getElementById("third").removeAttribute(checked);
+  if("<%=currentVariantVal%>"=="<%=currentQuestion.getVarId1()%>"){
+      var first = document.getElementById("first");
+
+      first.setAttribute("checked",true);
+      //first.checked=true;
+      var second = document.getElementById("second").removeAttribute(checked);
+      var third = document.getElementById("third").removeAttribute(checked);
+   }
+   else if("<%=currentVariantVal%>"=="<%=currentQuestion.getVarId2()%>"){
+      var second = document.getElementById("second");
+      second.setAttribute("checked",true);
+      //second.checked=true;
+      var first = document.getElementById("first").removeAttribute(checked);
+      var third = document.getElementById("third").removeAttribute(checked);
+
+      console.log("2 selected");
+
+   }
+   else if("<%=currentVariantVal%>"=="<%=currentQuestion.getVarId3()%>"){
+      var third = document.getElementById("third");
+      third.setAttribute("checked",true);
+      //third.checked=true;
+      var first = document.getElementById("first").removeAttribute(checked);
+      var second = document.getElementById("second").removeAttribute(checked);
+      console.log("3 selected");
+   }
+  
+
+  });
+  
+</script>
 <style type="text/css">
   #mainDiv p{
     padding: 10px;
@@ -57,13 +118,13 @@ wm2.quiz.findQuestion getQues = new findQuestion();
   
   <p><%=currentQ.getId()+". "%><%=currentQ.getQstatement()%></p>
   <p>
-    <input id="first" type="radio" name="variant" value="<%=currentQ.getVarId1()%>">
+    <input id="first" type="radio"  name="variant"  value="<%=currentQ.getVarId1()%>"/>
     <label for="first">A) <%=currentQ.getVarStat1()%> </label></input></p>
   <p>
-    <input id="second" type="radio" name="variant" value="<%=currentQ.getVarId2()%>">
+    <input id="second" type="radio" name="variant"  value="<%=currentQ.getVarId2()%>"/>
     <label for="second">B)  <%=currentQ.getVarStat2()%></label></input></p>
   <p>
-    <input id="third" type="radio" name="variant" value="<%=currentQ.getVarId3()%>">
+    <input id="third" type="radio" name="variant"  value="<%=currentQ.getVarId3()%>"/>
     <label for="third">C) <%=currentQ.getVarStat3()%></label></input></p>
   <div class="forButtons" style="display: flex;justify-content: space-around; padding: 50px"><input type="submit" name="BackButton" value="Back"/> <input type="submit" name="NextButton" value="Next"></div>
   <div id="forFinishButton" style="display: flex;justify-content: center;"><button>Finish</button></div>

@@ -6,6 +6,7 @@ import wm2.quiz.CheckedAnswerss;
 public class findQuestion{
 
 	ArrayList<Question> questionList;
+	public static ArrayList<CheckedAnswerss> checkedAnswerList = new ArrayList<CheckedAnswerss>();
 	public findQuestion(){
 	questionList = new ArrayList<Question>();
 
@@ -169,8 +170,22 @@ public class findQuestion{
         else{
             newAnswer.setTF(0);
         }
-
+        checkedAnswerList.add(newAnswer);
         return newAnswer;
+    }
+
+    public static Integer getSelectedId(Integer questionId){
+        Iterator iterator = checkedAnswerList.iterator();
+        CheckedAnswerss  keepAnswer = new CheckedAnswerss();
+        while(iterator.hasNext()) {
+            CheckedAnswerss std = (CheckedAnswerss)iterator.next();
+            if (std.getQuestionId().equals(questionId)) {
+                keepAnswer = std;
+                // System.out.println(keepAnswer.getSelectedAnswer()+ " -answer , "+std.getQuestionId()+" quesId ,"+questionId);
+            }
+        }
+        return keepAnswer.getSelectedAnswer();
+
     }
 
 }

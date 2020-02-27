@@ -23,7 +23,7 @@ public class QuestionServlet extends HttpServlet{
         int cQ = Integer.parseInt(currentQuestionId);
 	try{
         wm2.quiz.findQuestion getQues = new findQuestion();
-               PrintWriter wrt = response.getWriter();
+        PrintWriter wrt = response.getWriter();
 
         CheckedAnswerss newChecAns = getQues.checkQuestion(cQ, userName, variant);
         checkedAnswerList.add(newChecAns);
@@ -57,7 +57,6 @@ public class QuestionServlet extends HttpServlet{
                }
            }     
          }  
-          
 
     	Question findQuestion = getQues.findQuestionWithId(cQ);
     	wrt.println("<html><head></head><body>");

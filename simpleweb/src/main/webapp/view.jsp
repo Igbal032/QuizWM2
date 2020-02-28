@@ -38,6 +38,7 @@ wm2.quiz.findQuestion getQues = new findQuestion();
       third.setAttribute("checked",true);
       var first = document.getElementById("first").removeAttribute(checked);
       var second = document.getElementById("second").removeAttribute(checked);
+      // var hiddenRadio = document.getElementById("hiddenRadio").removeAttribute(checked);   
    }
   
 
@@ -95,13 +96,11 @@ wm2.quiz.findQuestion getQues = new findQuestion();
     <input id="third" type="radio" name="variant"  value="<%=currentQ.getVarId3()%>"/>
     <label for="third">C) <%=currentQ.getVarStat3()%></label></input></p>
   <div class="forButtons" style="display: flex;justify-content: space-around; padding: 50px"><input type="submit" name="BackButton" value="Back"/> <input type="submit" name="NextButton" value="Next"></div>
+  <div id="forFinishButton" style="display: flex;justify-content: center;"><button>Finish</button></div>
   <div class="content" style="display: flex;justify-content: space-between;">
   <p>Correct answers: 7</p>
   <p>Wrong answers: 3</p>
   </div>
-  </form>
-  <form method="POST" action="/Quiz/calculate-servlet">
-      <div id="forFinishButton" style="display: flex;justify-content: center;"><button type="submit">Finish</button></div>
   </form>
 </div>
 

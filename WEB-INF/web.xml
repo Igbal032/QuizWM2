@@ -20,5 +20,15 @@
     <url-pattern>/question-servlet</url-pattern>
   </servlet-mapping> 
 
+   <servlet>
+    <servlet-name>Calculate Servlet</servlet-name>
+    <servlet-class>wm2.quiz.CalculateServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Calculate Servlet</servlet-name>
+    <url-pattern>/calculate-servlet</url-pattern>
+  </servlet-mapping> 
+
 </web-app>
 

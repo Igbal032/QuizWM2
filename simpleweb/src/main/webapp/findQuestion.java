@@ -7,7 +7,6 @@ public class findQuestion{
 
 	ArrayList<Question> questionList;
 	public static ArrayList<CheckedAnswerss> checkedAnswerList = new ArrayList<CheckedAnswerss>();
-    boolean have=true;
 	public findQuestion(){
 	questionList = new ArrayList<Question>();
 
@@ -152,42 +151,15 @@ public class findQuestion{
 
     public CheckedAnswerss checkQuestion(Integer questionId, String userName, String answerId){
         Iterator iterator = questionList.iterator();
-        Question keepQuestion = new  Question();   
-        Iterator iteratorCheckQuestionList = checkedAnswerList.iterator();
-
+        Question keepQuestion = new  Question();
         CheckedAnswerss newAnswer = new CheckedAnswerss();
-        while(iteratorCheckQuestionList.hasNext()) {
-            CheckedAnswerss std = (CheckedAnswerss)iteratorCheckQuestionList.next();
-            if (std.getUserName().equals(userName)&&std.getQuestionId().equals(questionId)){
-                Integer changeInt = Integer.parseInt(answerId);
-                std.setSelectedAnswer(changeInt);
-                System.out.println(checkedAnswerList.size()+" not change");
-            while(iterator.hasNext()) {
-               Question stdQ = (Question)iterator.next();
-               if (stdQ.getId().equals(questionId)) {
- 
-                      keepQuestion = stdQ;
-                }
-            }  
-
-               if (keepQuestion.getAnswerId()==Integer.parseInt(answerId)) {
-                   std.setTF(1);
-               }
-               else{
-                   std.setTF(0);
-               }  
-                return std;
-            }
-            
-        }
-
         while(iterator.hasNext()) {
-               Question std = (Question)iterator.next();
-               if (std.getId().equals(questionId)) {
- 
-                      keepQuestion = std;
-                  }
-              }      
+            Question std = (Question)iterator.next();
+            if (std.getId().equals(questionId)) {
+
+                keepQuestion = std;
+            }
+        }
         newAnswer.setUserName(userName);
         newAnswer.setQuestionId(questionId);
         newAnswer.setSelectedAnswer(Integer.parseInt(answerId));
@@ -198,9 +170,7 @@ public class findQuestion{
         else{
             newAnswer.setTF(0);
         }
-             checkedAnswerList.add(newAnswer);
-        
- 
+        checkedAnswerList.add(newAnswer);
         return newAnswer;
     }
 
@@ -211,6 +181,7 @@ public class findQuestion{
             CheckedAnswerss std = (CheckedAnswerss)iterator.next();
             if (std.getQuestionId().equals(questionId)) {
                 keepAnswer = std;
+                // System.out.println(keepAnswer.getSelectedAnswer()+ " -answer , "+std.getQuestionId()+" quesId ,"+questionId);
             }
         }
         return keepAnswer.getSelectedAnswer();
